@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>direct</title>
+<body>
+<main>
+<p>direct</p>
+</main>
+<script>
+(function (window, document) {
+    window.history.replaceState('do', document.title, document.URL);
+    window.history.pushState('dummy', document.title, document.URL);
+    window.addEventListener('pageshow', function () {
+        debugger;
+    })(window, document);
+});
+</script>
+</body>
+</html>
