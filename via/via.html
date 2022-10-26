@@ -8,11 +8,13 @@
 <p>via</p>
 </main>
 <script>
+(function (window, document) {
     window.history.replaceState('do', document.title, document.URL);
     window.history.pushState('dummy', document.title, document.URL);
     window.addEventListener('popstate', function () {
         debugger;
     },false);
+})(window, document);
 </script>
 </body>
 </html>
