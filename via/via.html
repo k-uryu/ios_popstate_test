@@ -9,10 +9,12 @@
 </main>
 <script>
 (function (window, document) {
-    window.history.replaceState('do', document.title, document.URL);
-    window.history.pushState('dummy', document.title, document.URL);
-    window.addEventListener('popstate', function () {
+    window.history.replaceState('wait', document.title, document.URL);
+    window.history.pushState('dummy', document.title, 'https://k-uryu.github.io/ios_popstate_test/via/dummy.html');
+    window.addEventListener('popstate', function (e) {
+        console.log(e.state);
         debugger;
+        history.forward();
     },false);
 })(window, document);
 </script>

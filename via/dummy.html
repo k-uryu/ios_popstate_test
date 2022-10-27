@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>via</title>
+<body>
+<main>
+<p>via</p>
+</main>
+<script>
+(function (window, document) {
+    console.log(history.state);
+    if (history.state == 'dummy') {
+        debugger;
+        history.back();
+    }
+})(window, document);
+</script>
+</body>
+</html>
