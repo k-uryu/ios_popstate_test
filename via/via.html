@@ -9,14 +9,16 @@
 </main>
 <script>
 (function (window, document) {
-    window.history.replaceState('wait', document.title, document.URL);
-    window.history.pushState('dummy', document.title, 'https://k-uryu.github.io/ios_popstate_test/via/dummy.html');
+    window.history.replaceState('wait', document.title, document.URL + '#wait');
+    window.history.pushState('dummy', document.title, document.URL + '#dummy');
+    window.history.back();
+
     window.addEventListener('popstate', function (e) {
-        console.log(history.state);
-        console.log(e.state);
-        if (e.state == 'wait') {
-            debugger;
-            history.forward();
+        switch (e.state) {
+            case 'wait':
+                window.history.replaceState('do', document.title, document.URL + '#do');
+                window.history.forward();
+                break;
         }
     }, false);
 })(window, document);
