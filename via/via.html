@@ -6,6 +6,7 @@
 <body>
 <main>
 <p>via</p>
+<p id="url"></p>
 </main>
 <script>
 (function (window, document) {
@@ -14,6 +15,7 @@
     window.history.back();
 
     window.addEventListener('popstate', function (e) {
+        document.getElementById('url').textContent = document.URL;
         switch (e.state) {
             case 'wait':
                 window.history.replaceState('do', document.title, document.URL + '#do');
