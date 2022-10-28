@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8" />
-<title>via</title>
+<title>pageshow</title>
 <style>
 body {
     height: 2000px;
@@ -11,7 +11,7 @@ body {
 </head>
 <body>
 <main>
-<p>via</p>
+<p>pageshow</p>
 <p id="url"></p>
 <form action="//www-creators.com/rsc/receiver.php" method="post">
     <label>年齢：</label><input type="number" name="age" value="">
@@ -39,10 +39,9 @@ body {
         showUrl();
     }, false);
 
-    window.addEventListener("pagehide", event => {
-        if (event.persisted) {
-            debugger;
-            window.history.back();
+    window.addEventListener("pagehide", function (e) {
+        if (e.persisted) {
+            window.history.replaceState('pagehide', document.title, document.URL + '#pagehide');
         }
     }, false);
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>popstate</title>
+<style>
+body {
+    height: 2000px;
+}
+</style>
+</head>
+<body>
+<main>
+<p>popstate</p>
+<p></p><a href="./pagehide.html">via</a></p>
+<p><label>window.history.state: </label><span id="history_state"></span></p>
+</main>
+<script>
+(function (window, document) {
+    window.addEventListener('pageshow', function () {
+        document.getElementById('history_state').textContent = window.history.state;
+        switch (window.history.state) {
+            case 'pagehide':
+                window.history.replaceState(null, document.title, document.URL);
+                window.history.forward();
+                break;
+        }
+    }, false);
+})(window, document);
+</script>
+</body>
+</html>
