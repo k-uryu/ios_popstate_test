@@ -3,19 +3,30 @@
 <head>
 <meta charset="utf-8" />
 <title>via</title>
+<style>
+body {
+    height: 2000px;
+}
+</style>
+</head>
 <body>
 <main>
 <p>via</p>
 <p id="url"></p>
+<form action="//www-creators.com/rsc/receiver.php" method="post">
+    <label>年齢：</label><input type="number" name="age" value="">
+</form>
 </main>
 <script>
 (function (window, document) {
-    window.history.replaceState('wait', document.title, document.URL + '#wait');
-    window.history.pushState('dummy', document.title, document.URL + '#dummy');
-    window.history.back();
+    if (!window.history.state) {
+        window.history.replaceState('wait', document.title, document.URL + '#wait');
+        window.history.pushState('dummy', document.title, document.URL + '#dummy');
+        window.history.back();
+    }
 
     window.addEventListener('popstate', function (e) {
-        document.getElementById('url').textContent = document.URL;
+        showUrl();
         switch (e.state) {
             case 'wait':
                 window.history.replaceState('do', document.title, document.URL + '#do');
@@ -23,6 +34,14 @@
                 break;
         }
     }, false);
+
+    window.addEventListener('pageshow', function () {
+        showUrl();
+    }, false);
+
+    var showUrl = function () {
+        document.getElementById('url').textContent = document.URL;
+    };
 })(window, document);
 </script>
 </body>
