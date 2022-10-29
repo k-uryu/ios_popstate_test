@@ -22,10 +22,13 @@
             window.location.reload();
         }
 
+        var epForward = false;
         if (document.cookie.indexOf('_ws_1_ep_forward=true') !== -1) {
+            epForward = true;
             document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
             window.history.forward();
         }
+        document.getElementById('ep_forward').textContent = epForward;
     }, false);
 })(window, document);
 </script>

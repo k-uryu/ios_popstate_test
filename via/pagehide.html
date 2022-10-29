@@ -40,12 +40,11 @@ body {
         showUrl();
     }, false);
 
-    window.addEventListener("pagehide", function () {
-        if (window.history.state != 'do') {
-            return;
+    window.addEventListener("pagehide", function (e) {
+        if (e.persisted && window.history.state == 'do') {
+            window.history.replaceState('done', document.title, document.URL + '#done');
+            document.cookie = '_ws_1_ep_forward=true;path=/;max-age=3';
         }
-        window.history.replaceState('done', document.title, document.URL + '#done');
-        document.cookie = '_ws_1_ep_forward=true;path=/;max-age=3';
     }, false);
 
     var showUrl = function () {
