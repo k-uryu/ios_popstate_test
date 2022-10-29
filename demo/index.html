@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>index</title>
+</head>
+<body>
+<main>
+<p>index</p>
+<p></p><a href="./via.html">via</a></p>
+<p></p><a href="./pagehide.html">pagehide</a></p>
+<p></p><a href="./pageshow.html">pageshow</a></p>
+<p></p><a href="./dummy.html">dummy</a></p>
+</main>
+<script>
+(function (window, document) {
+    document.addEventListener('readystatechange', function (e) {
+        console.log('index readystatechange: ' + document.readyState);
+        debugger;
+    });
+
+    document.addEventListener('DOMContentLoaded', function (e) {
+        console.log('index DOMContentLoaded');
+        debugger;
+    });
+
+    window.addEventListener('load', function (e) {
+        console.log('index load');
+        debugger;
+    });
+
+    window.addEventListener('pageshow', function (e) {
+        console.log('index pageshow');
+        debugger;
+    }, false);
+})(window, document);
+</script>
+</body>
+</html>
