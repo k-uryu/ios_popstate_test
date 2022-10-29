@@ -17,12 +17,15 @@
 </main>
 <script>
 (function (window, document) {
-    window.addEventListener('pageshow', function () {
+    window.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+            window.location.reload();
+        }
+
         if (document.cookie.indexOf('_ws_1_ep_forward=true') !== -1) {
             document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
             window.history.forward();
         }
-
     }, false);
 })(window, document);
 </script>
