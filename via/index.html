@@ -20,13 +20,13 @@
     window.addEventListener('pageshow', function (e) {
         if (e.persisted) {
             window.location.reload();
+            return false;
         }
 
         var epForward = false;
         if (document.cookie.indexOf('_ws_1_ep_forward=true') !== -1) {
             epForward = true;
             document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
-            debugger;
             window.history.forward();
         }
         document.getElementById('ep_forward').textContent = epForward;

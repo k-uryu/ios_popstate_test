@@ -44,7 +44,6 @@ body {
         if (e.persisted && window.history.state == 'do') {
             window.history.replaceState('done', document.title, document.URL + '#done');
             document.cookie = '_ws_1_ep_forward=true;path=/;max-age=3';
-            debugger;
         }
     }, false);
 
