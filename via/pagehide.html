@@ -41,7 +41,12 @@ body {
     }, false);
 
     window.addEventListener("pagehide", function (e) {
+        if (window.history.state != 'do') {
+            return;
+        }
+
         if (e.persisted) {
+            window.history.replaceState('done', document.title, document.URL + '#done');
             document.cookie = '_ws_1_ep_forward=true;path=/;max-age=3';
         }
     }, false);
