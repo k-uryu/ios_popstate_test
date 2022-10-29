@@ -21,35 +21,34 @@ body {
 <script>
 (function (window, document) {
     if (!window.history.state) {
-        window.history.replaceState('wait', document.title, document.URL + '#wait');
-        window.history.pushState('dummy', document.title, document.URL + '#dummy');
+        window.history.replaceState('wait', document.title, '#wait');
+        window.history.pushState('dummy', document.title, '#dummy');
         window.history.back();
     }
 
     window.addEventListener('popstate', function (e) {
-        showUrl();
         switch (e.state) {
             case 'wait':
-                window.history.replaceState('do', document.title, document.URL + '#do');
+                window.history.replaceState('do', document.title, '#do');
                 window.history.forward();
+                break;
+            case 'do':
+                window.history.replaceState('done', document.title, '#done');
                 break;
         }
     }, false);
 
     window.addEventListener('pageshow', function () {
-        showUrl();
-    }, false);
-
-    window.addEventListener("pagehide", function (e) {
-        if (e.persisted && window.history.state == 'do') {
-            window.history.replaceState('done', document.title, document.URL + '#done');
-            document.cookie = '_ws_1_ep_forward=true;path=/;max-age=3';
+        if (window.history.state == 'do') {
+            window.history.replaceState('done', document.title, '#done');
         }
     }, false);
 
-    var showUrl = function () {
-        document.getElementById('url').textContent = document.URL;
-    };
+    window.addEventListener("pagehide", function (e) {
+        if (e.persisted && window.history.state == 'dummy') {
+            document.cookie = '_ws_1_ep_forward=true;path=/;max-age=3';
+        }
+    }, false);
 })(window, document);
 </script>
 </body>

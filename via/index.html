@@ -12,8 +12,6 @@
 <p></p><a href="./pagehide.html">pagehide</a></p>
 <p></p><a href="./pageshow.html">pageshow</a></p>
 <p></p><a href="./dummy.html">dummy</a></p>
-<hr>
-<p><label>ep_forward: </label><span id="ep_forward"></span></p>
 </main>
 <script>
 (function (window, document) {
@@ -23,13 +21,10 @@
             return false;
         }
 
-        var epForward = false;
         if (document.cookie.indexOf('_ws_1_ep_forward=true') !== -1) {
-            epForward = true;
             document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
             window.history.forward();
         }
-        document.getElementById('ep_forward').textContent = epForward;
     }, false);
 })(window, document);
 </script>
