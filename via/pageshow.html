@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>popstate</title>
 <style>
 body {
@@ -18,13 +19,7 @@ body {
 <script>
 (function (window, document) {
     window.addEventListener('pageshow', function () {
-        document.getElementById('history_state').textContent = window.history.state;
-        switch (window.history.state) {
-            case 'pagehide':
-                window.history.replaceState(null, document.title, document.URL);
-                window.history.forward();
-                break;
-        }
+        //
     }, false);
 })(window, document);
 </script>

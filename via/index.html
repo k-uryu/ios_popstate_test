@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>index</title>
 </head>
 <body>
@@ -10,6 +11,7 @@
 <p></p><a href="./via.html">via</a></p>
 <p></p><a href="./pagehide.html">pagehide</a></p>
 <p></p><a href="./pageshow.html">pageshow</a></p>
+<p></p><a href="./dummy.html">dummy</a></p>
 <hr>
 <p><label>ep_forward: </label><span id="ep_forward"></span></p>
 </main>
@@ -17,7 +19,7 @@
 (function (window, document) {
     window.addEventListener('pageshow', function () {
         var epForward = false;
-        if (document.cookie.indexOf('_ws_1_ep_forward=true;')) {
+        if (document.cookie.indexOf('_ws_1_ep_forward=true;') !== -1) {
             epForward = true;
         }
         document.getElementById('ep_forward').textContent = epForward;
