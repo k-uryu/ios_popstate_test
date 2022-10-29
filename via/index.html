@@ -20,9 +20,11 @@
     window.addEventListener('pageshow', function () {
         var epForward = false;
         if (document.cookie.indexOf('_ws_1_ep_forward=true') !== -1) {
+            document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
             epForward = true;
         }
         document.getElementById('ep_forward').textContent = epForward;
+
         window.history.forward();
     }, false);
 })(window, document);
