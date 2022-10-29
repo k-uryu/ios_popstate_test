@@ -16,11 +16,6 @@
 <script>
 (function (window, document) {
     window.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-            window.location.reload();
-            return false;
-        }
-
         if (document.cookie.indexOf('_ws_1_ep_forward=true') !== -1) {
             document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
             window.history.forward();
