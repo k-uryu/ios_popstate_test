@@ -11,20 +11,16 @@
 <p></p><a href="./pagehide.html">pagehide</a></p>
 <p></p><a href="./pageshow.html">pageshow</a></p>
 <hr>
-<p><label>referrer: </label><span id="referrer"></span></p>
 <p><label>pagehide_path: </label><span id="pagehide_path"></span></p>
 </main>
 <script>
 (function (window, document) {
     window.addEventListener('pageshow', function () {
-        var referrer = document.referrer;
-        document.getElementById('referrer').textContent = referrer;
-        
-        var regex = new RegExp('pagehide_path=(https?\:\/\/[^<>"]+);?', 'i');
-        var match = document.cookie.match(regex);
-        if (match) {
-            document.getElementById('pagehide_path').textContent = match[1];
+        var epForward = false;
+        if (document.cookie.indexOf('_ws_1_ep_forward=true;')) {
+            epForward = true;
         }
+        document.getElementById('_ws_1_ep_forward').textContent = epForward;
     }, false);
 })(window, document);
 </script>
