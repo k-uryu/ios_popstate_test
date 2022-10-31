@@ -18,7 +18,6 @@
     document.addEventListener('readystatechange', function (e) {
         console.log('index readystatechange');
         if (execEpForward && document.readyState == 'interactive') {
-            document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
             window.history.forward();
             return false;
         }
