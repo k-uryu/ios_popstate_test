@@ -15,24 +15,26 @@
 </main>
 <script>
 (function (window, document) {
-    var execEpForward = false;
     document.addEventListener('readystatechange', function (e) {
         console.log('index readystatechange');
-        if (checkEpForward() && document.readyState == 'interactive') {
-            execEpForward = true;
-            document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
-            window.history.forward();
+        if (document.readyState == 'interactive' && checkEpForward()) {
+            execEpForward();
             return false;
         }
     });
 
     window.addEventListener('pageshow', function (e) {
         console.log('index pageshow');
-        if (e.persisted && !execEpForward && checkEpForward()) {
-            window.location.reload();
+        if (e.persisted && checkEpForward()) {
+            execEpForward();
             return false;
         }
     }, false);
+
+    var execEpForward = function () {
+        document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
+        window.history.forward();
+    };
 
     var checkEpForward = function () {
         return document.cookie.indexOf('_ws_1_ep_forward=true') !== -1;
