@@ -17,7 +17,7 @@
 (function (window, document) {
     document.addEventListener('readystatechange', function (e) {
         console.log('index readystatechange');
-        if (execEpForward && document.readyState == 'interactive') {
+        if (execEpForward()9 && document.readyState == 'interactive') {
             window.history.forward();
             return false;
         }
@@ -25,7 +25,7 @@
 
     window.addEventListener('pageshow', function (e) {
         console.log('index pageshow');
-        if (execEpForward && e.persisted) {
+        if (execEpForward() && e.persisted) {
             window.location.reload();
             return false;
         }
