@@ -17,7 +17,7 @@
 (function (window, document) {
     document.addEventListener('readystatechange', function (e) {
         console.log('index readystatechange');
-        if (execEpForward()9 && document.readyState == 'interactive') {
+        if (execEpForward() && document.readyState == 'interactive') {
             window.history.forward();
             return false;
         }
