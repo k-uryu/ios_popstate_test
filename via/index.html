@@ -15,9 +15,11 @@
 </main>
 <script>
 (function (window, document) {
+    var execEpForward = false;
     document.addEventListener('readystatechange', function (e) {
         console.log('index readystatechange');
-        if (execEpForward() && document.readyState == 'interactive') {
+        if (checkEpForward() && document.readyState == 'interactive') {
+            execEpForward = true;
             document.cookie = '_ws_1_ep_forward=false;path=/;max-age=0';
             window.history.forward();
             return false;
@@ -26,13 +28,13 @@
 
     window.addEventListener('pageshow', function (e) {
         console.log('index pageshow');
-        if (execEpForward() && e.persisted) {
+        if (e.persisted && !execEpForward && checkEpForward()) {
             window.location.reload();
             return false;
         }
     }, false);
 
-    var execEpForward = function () {
+    var checkEpForward = function () {
         return document.cookie.indexOf('_ws_1_ep_forward=true') !== -1;
     };
 })(window, document);
