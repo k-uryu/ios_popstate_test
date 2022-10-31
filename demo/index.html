@@ -29,7 +29,12 @@
 
     window.addEventListener('pageshow', function (e) {
         console.log('index pageshow');
-        debugger;
+        if (e.persisted) {
+            debugger;
+            window.location.reload();
+        } else {
+            debugger;
+        }
     }, false);
 })(window, document);
 </script>

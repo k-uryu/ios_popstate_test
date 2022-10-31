@@ -27,6 +27,7 @@ body {
     }
 
     window.addEventListener('popstate', function (e) {
+        console.log('pagehide popstate');
         switch (e.state) {
             case 'wait':
                 window.history.replaceState('do', document.title, '#do');
@@ -39,16 +40,27 @@ body {
     }, false);
 
     window.addEventListener('pageshow', function () {
+        console.log('pagehide pageshow');
         if (window.history.state == 'do') {
             window.history.replaceState('done', document.title, '#done');
         }
     }, false);
 
+    window.addEventListener("beforeunload", function (e) {
+        console.log('demo beforeunload');
+        setEpForward();
+    }, false);
+
     window.addEventListener("pagehide", function (e) {
-        if (e.persisted && window.history.state == 'dummy') {
+        console.log('pagehide pagehide');
+        setEpForward();
+    }, false);
+
+    var setEpForward = function () {
+        if (window.history.state == 'dummy') {
             document.cookie = '_ws_1_ep_forward=true;path=/;max-age=3';
         }
-    }, false);
+    };
 })(window, document);
 </script>
 </body>
