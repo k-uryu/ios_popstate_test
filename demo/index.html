@@ -12,30 +12,7 @@
 </main>
 <script>
 (function (window, document) {
-    document.addEventListener('readystatechange', function (e) {
-        console.log('index readystatechange: ' + document.readyState);
-        debugger;
-    });
-
-    document.addEventListener('DOMContentLoaded', function (e) {
-        console.log('index DOMContentLoaded');
-        debugger;
-    });
-
-    window.addEventListener('load', function (e) {
-        console.log('index load');
-        debugger;
-    });
-
-    window.addEventListener('pageshow', function (e) {
-        console.log('index pageshow');
-        if (e.persisted) {
-            debugger;
-            window.location.reload();
-        } else {
-            debugger;
-        }
-    }, false);
+    //
 })(window, document);
 </script>
 </body>

@@ -20,35 +20,16 @@ body {
 </main>
 <script>
 (function (window, document) {
-    if (!window.history.state) {
-        window.history.replaceState('do', document.title, '#do');
-        window.history.pushState('dummy', document.title, '#dummy');
-        window.history.back();
-    }
-
+    window.history.replaceState('do', document.title, '#do');
     window.addEventListener('pageshow', function () {
-        console.log('demo pageshow');
-        debugger;
-    }, false);
-
-    window.addEventListener("beforeunload", function (e) {
-        console.log('demo beforeunload');
-        debugger;
-    }, false);
-
-    window.addEventListener("pagehide", function (e) {
-        console.log('demo pagehide');
-        debugger;
-    }, false);
-
-    window.addEventListener("unload", function (e) {
-        console.log('demo unload');
-        debugger;
+        if (!e.persisted) {
+            window.history.replaceState('do', document.title, '#do');
+            window.history.pushState('dummy', document.title, '#dummy');
+        }
     }, false);
 
     window.addEventListener('popstate', function (e) {
-        console.log('demo popstate');
-        debugger;
+        console.log(e.state);
     }, false);
 })(window, document);
 </script>
