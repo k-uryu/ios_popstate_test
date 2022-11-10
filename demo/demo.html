@@ -23,10 +23,14 @@ body {
     window.history.replaceState('do', document.title, '#do');
     window.addEventListener('pageshow', function (e) {
         if (!e.persisted) {
+            console.log('exec replaceState');
             window.history.replaceState('do', document.title, '#do');
+
+            console.log('wait pushState 10000ms');
             setTimeout(function () {
+                console.log('exec pushState');
                 window.history.pushState('dummy', document.title, '#dummy');
-            }, 1000);
+            }, 10000);
         }
     }, false);
 
