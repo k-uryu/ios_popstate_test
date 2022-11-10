@@ -21,7 +21,7 @@ body {
 <script>
 (function (window, document) {
     window.history.replaceState('do', document.title, '#do');
-    window.addEventListener('pageshow', function () {
+    window.addEventListener('pageshow', function (e) {
         if (!e.persisted) {
             window.history.replaceState('do', document.title, '#do');
             window.history.pushState('dummy', document.title, '#dummy');
