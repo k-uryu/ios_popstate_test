@@ -21,10 +21,10 @@ body {
 <script>
 (function (window, document) {
     window.addEventListener('pageshow', function (e) {
-        console.log('exec pushState /dummy#do');
-        window.history.pushState('do', document.title, '/dummy#do');
-        console.log('exec pushState /dummy#dummy');
-        window.history.pushState('dummy', document.title, '/dummy#dummy');
+        console.log('exec pushState ./dummy#do');
+        window.history.pushState('do', document.title, './dummy#do');
+        console.log('exec pushState ./dummy#dummy');
+        window.history.pushState('dummy', document.title, './dummy#dummy');
     }, false);
 })(window, document);
 </script>
