@@ -21,10 +21,12 @@ body {
 <script>
 (function (window, document) {
     window.addEventListener('pageshow', function (e) {
-        console.log('exec pushState /ios_popstate_test/demo/dummy#do');
-        window.history.pushState('do', document.title, '/ios_popstate_test/demo/dummy#do');
-        console.log('exec pushState /ios_popstate_test/demo/dummy#dummy');
-        window.history.pushState('dummy', document.title, '/ios_popstate_test/demo/dummy#dummy');
+        console.log('exec window.location.href');
+        window.location.href = './dummy.html#do';
+        // console.log('exec pushState /ios_popstate_test/demo/dummy.html#do');
+        // window.history.pushState('do', document.title, '/ios_popstate_test/demo/dummy.html#do');
+        console.log('exec pushState /ios_popstate_test/demo/dummy.html#dummy');
+        window.history.pushState('dummy', document.title, '/ios_popstate_test/demo/dummy.html#dummy');
     }, false);
 })(window, document);
 </script>
